@@ -11,12 +11,13 @@
 % obj.close()                     Disconnect
 % obj.setPhaseShift(phaseShift)   Set phase shift  
 
-classdef MXG_N5182A_Generator
+classdef Generator_MXG_N5182A
     properties
         interface = 0;
+        ipAddress= '192.168.6.4' ;
     end
     methods
-        function obj1 = MXG_N5182A_Generator(ipAddress)
+        function obj1 = Generator_MXG_N5182A(ipAddress)            
             rsrcName = ['TCPIP0::', ipAddress,'::inst0::INSTR'];
             obj1.interface = instrfind('Type', 'visa-tcpip', 'RsrcName', rsrcName, 'Tag', '');
             if isempty(obj1.interface)
