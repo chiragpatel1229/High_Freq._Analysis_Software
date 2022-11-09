@@ -16,14 +16,14 @@
 %  obj.saveData()          Save the data
 %  obj.close()             Disconnect
 
-
-classdef EXA_N9010A_Analyzer
+ 
+classdef Analyzer_EXA_N9010A
     properties
         interface = 0;
         ipAddress = ('192.168.6.6');
     end
     methods
-        function obj = EXA_N9010A_Analyzer(ipAddress)
+        function obj = Analyzer_EXA_N9010A(ipAddress)
              rsrcName = ['TCPIP0::', ipAddress,'::inst0::INSTR'];
              obj.interface = instrfind('Type', 'visa-tcpip', 'RsrcName', rsrcName, 'Tag', '');
             if isempty(obj.interface)
