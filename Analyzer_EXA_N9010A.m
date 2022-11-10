@@ -1,7 +1,8 @@
 %  Instructions for use, for the Agilent N9010A spectrum analyzer control
 
 
-%  obj = EXA_N9010A_Analyzer('192.168.6.6')   connect device
+%  obj = Analyzer_EXA_N9010A('192.168.6.6')   connect device
+%  obj = Analyzer_EXA_N9010A()
 %  obj.bw(3e6)             set BW to 3MHz
 %  obj.cf(3.5e9)           set the center frequency to 1GHz
 %  obj.span(10e9)          Set Span size to 10Mz
@@ -20,14 +21,12 @@
 classdef Analyzer_EXA_N9010A
     properties
         interface = 0;
-        ipAddress = ('192.168.6.6');
     end
     methods
-        function obj = Analyzer_EXA_N9010A(ipAddress)
-             rsrcName = ['TCPIP0::', ipAddress,'::inst0::INSTR'];
-             obj.interface = instrfind('Type', 'visa-tcpip', 'RsrcName', rsrcName, 'Tag', '');
+        function obj = Analyzer_EXA_N9010A()
+            obj.interface = instrfind('Type', 'visa-tcpip', 'RsrcName', 'TCPIP0::192.168.6.6::inst0::INSTR', 'Tag', '');
             if isempty(obj.interface)
-                 obj.interface = visa('KEYSIGHT', rsrcName);
+                 obj.interface = visa('KEYSIGHT', 'TCPIP0::192.168.6.6::inst0::INSTR');
             else
                 fclose(obj.interface);
                 obj.interface = obj.interface(1);
