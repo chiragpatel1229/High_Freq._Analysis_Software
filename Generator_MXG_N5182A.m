@@ -1,27 +1,26 @@
 % Instructions for use is applicable to Keysight's "MXG N5182A 100kHz-6GHz"
 
 
-% obj = MXG_N5182A_Generator('192.168.6.4')    connect device
-% obj.setFre(10e8)                Set frequency
-% obj.setLevel(10)                Set Power Level (dB)
-% obj.on()                        Turn on output
-% obj.off()                       Turn off output
-% obj.getFre()                    Get the current frequency
-% obj.getLevel()                  Get the current level
-% obj.close()                     Disconnect
-% obj.setPhaseShift(phaseShift)   Set phase shift  
+% obj = Generator_MXG_N5182A('192.168.6.4')    connect device
+% obj1 = Generator_MXG_N5182A()
+% obj1.setFre(10e8)                Set frequency
+% obj1.setLevel(10)                Set Power Level (dB)
+% obj1.on()                        Turn on output
+% obj1.off()                       Turn off output
+% obj1.getFre()                    Get the current frequency
+% obj1.getLevel()                  Get the current level
+% obj1.close()                     Disconnect
+% obj1.setPhaseShift(phaseShift)   Set phase shift  
 
 classdef Generator_MXG_N5182A
     properties
-        interface = 0;
-        ipAddress= '192.168.6.4' ;
+        interface = 0;        
     end
     methods
-        function obj1 = Generator_MXG_N5182A(ipAddress)            
-            rsrcName = ['TCPIP0::', ipAddress,'::inst0::INSTR'];
-            obj1.interface = instrfind('Type', 'visa-tcpip', 'RsrcName', rsrcName, 'Tag', '');
+        function obj1 = Generator_MXG_N5182A()                        
+            obj1.interface = instrfind('Type', 'visa-tcpip', 'RsrcName', 'TCPIP0::192.168.6.4::inst0::INSTR', 'Tag', '');
             if isempty(obj1.interface)
-                obj1.interface = visa('KEYSIGHT', rsrcName);
+                obj1.interface = visa('KEYSIGHT', 'TCPIP0::192.168.6.4::inst0::INSTR');
             else
                 fclose(obj1.interface);
                 obj1.interface = obj1.interface(1);
