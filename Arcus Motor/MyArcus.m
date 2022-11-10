@@ -17,7 +17,7 @@
 % MyArcus.getParams     Get the exact operating perameters from the motor
 % MyArcus.setParams     adjust all the parameters as per need e.g.(0,1000,300,300)
 % MyArcus.PositionTo    turn the motor ( 0-3200 ) steps
-% MyArcus.BackToZero    set the motor position Back to 0
+% MyArcus.BackToZero    set the motor position to 0
 
 
 classdef MyArcus
@@ -210,7 +210,9 @@ classdef MyArcus
             end
         end
         
-        % Set current position back to zero
+        % Set current position to zero 
+        % motor ni position ne jiro par set karva mate aa use karva no che
+        % jya hase tya ne tya j zero set thay jase
         function out = BackToZero()
             comm = 'PX';
             out = RunCMD(comm,'=0');
