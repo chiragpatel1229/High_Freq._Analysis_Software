@@ -205,8 +205,7 @@ classdef MyArcus
             out = RunCMD('CLR');
             out2 = RunCMD('MM');
             if strcmp(out2,'0')&&(pos < 3210)
-                RunCMD('X',num2str(pos));
-                
+                RunCMD('X',num2str(pos));                
             end
         end
         
@@ -216,9 +215,7 @@ classdef MyArcus
         function out = BackToZero()
             comm = 'PX';
             out = RunCMD(comm,'=0');
-        end
-       
-        
+        end        
     end
     
 end
