@@ -1,5 +1,4 @@
-% a Class is working with 2 mehtods 
-% trial is Successful 
+
 
 
 classdef trial_gen  %Agilent Generator MXG-N5182A
