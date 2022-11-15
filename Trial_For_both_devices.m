@@ -1,8 +1,13 @@
+% A Class is works good with 2 mehtods 
+% trial is Successful 
+
+
+
 classdef Trial_For_both_devices  % Agilent Analyser EXA-N9010A
     properties
         interface = 0;
-
     end
+    
     methods
         function obj = Trial_For_both_devices()
             obj.interface = instrfind('Type', 'visa-tcpip', 'RsrcName', 'TCPIP0::192.168.6.6::inst0::INSTR', 'Tag', '');
@@ -14,8 +19,7 @@ classdef Trial_For_both_devices  % Agilent Analyser EXA-N9010A
             end
             fopen(obj.interface);
         end
-        
-%%=======================================================================%%%       
+             
      %! set Marker on the Peak         
         function smp(obj, id)
             command0 = sprintf(':Calculate:Marker%d:CPSearch 1', id);
@@ -34,7 +38,11 @@ classdef Trial_For_both_devices  % Agilent Analyser EXA-N9010A
         end
     end
     
-    methods
+%%=======================================================================%%%   
+                         % GENERATOR %
+%%=======================================================================%%%
+
+methods
         function obj1 = trial_gen()                          %#ok<NOIN>
             obj1.interface = instrfind('Type', 'visa-tcpip', 'RsrcName', 'TCPIP0::192.168.6.4::inst0::INSTR', 'Tag', '');
             if isempty(obj1.interface)
@@ -46,7 +54,6 @@ classdef Trial_For_both_devices  % Agilent Analyser EXA-N9010A
             fopen(obj1.interface);
         end
         
-%====================================================================%
         % ! open output
         function on(obj)
             fprintf(obj.interface, 'OUTPUT1 1');
