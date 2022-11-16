@@ -1,15 +1,14 @@
-% A Class is works good with 2 mehtods 
-% trial is Successful 
-
-
-
-classdef Trial_For_both_devices  % Agilent Analyser EXA-N9010A
+classdef All_Three_Devices  % Agilent Analyser EXA-N9010A
     properties
         interface = 0;
     end
-    
-    methods
-        function obj = Trial_For_both_devices()
+
+%%=======================================================================%%   
+                         % ANALYZER %
+%%=======================================================================%%
+
+    methods (Access = public)
+        function obj = All_Three_Devices()                                
             obj.interface = instrfind('Type', 'visa-tcpip', 'RsrcName', 'TCPIP0::192.168.6.6::inst0::INSTR', 'Tag', '');
             if isempty(obj.interface)
                  obj.interface = visa('KEYSIGHT', 'TCPIP0::192.168.6.6::inst0::INSTR');
@@ -38,12 +37,12 @@ classdef Trial_For_both_devices  % Agilent Analyser EXA-N9010A
         end
     end
     
-%%=======================================================================%%%   
+%%=======================================================================%%   
                          % GENERATOR %
-%%=======================================================================%%%
+%%=======================================================================%%
 
-    methods
-        function obj1 = trial_gen()                          %#ok<NOIN>
+    methods (Access = public)
+        function obj1 = trial_gen()                              %#ok<NOIN>
             obj1.interface = instrfind('Type', 'visa-tcpip', 'RsrcName', 'TCPIP0::192.168.6.4::inst0::INSTR', 'Tag', '');
             if isempty(obj1.interface)
                 obj1.interface = visa('KEYSIGHT', 'TCPIP0::192.168.6.4::inst0::INSTR');
@@ -66,6 +65,20 @@ classdef Trial_For_both_devices  % Agilent Analyser EXA-N9010A
         function close_g(obj)
             fclose(obj.interface);
         end
+    end
+
+%%=======================================================================%%
+                         % ARCUS MOTOR %
+%%=======================================================================%%
+    
+    
+    methods (Static)
+       
+        % Device information
+        function out = DevInfo()
+            out = [];
+            out.ID = RunCMD('ID');
+            out.Ver = RunCMD('VER');
+        end
     end    
 end        
-        

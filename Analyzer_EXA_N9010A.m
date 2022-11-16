@@ -103,7 +103,7 @@ classdef Analyzer_EXA_N9010A
         end        
         
       %! move the marker Next Position
-        function mnp(obj, id)
+           function mnp(obj, id)
                 command0 = sprintf(':CALCulate:Marker%d:MAXimum:NEXT', id);
                 fprintf(obj.interface, command0);
         end
