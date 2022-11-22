@@ -3,6 +3,7 @@
 
 %  obj = Analyzer_EXA_N9010A('192.168.6.6')   connect device
 %  obj = Analyzer_EXA_N9010A()
+%  obj.Auto_Tune()         Auto tune the frequency window in case of errors
 %  obj.bw(3e6)             set BW to 3MHz
 %  obj.cf(3.5e9)           set the center frequency to 1GHz
 %  obj.span(10e9)          Set Span size to 10Mz
@@ -39,12 +40,9 @@ classdef Analyzer_EXA_N9010A
                 % scpi commands
                 
         
-        function run(obj)
-            command0 = ':INITiate:CONTinuous 1';
-            fprintf(obj.interface, command0);
-        end
-        function stop(obj)
-            command0 = ':INITiate:CONTinuous 0';
+     %! Auto Tune the Frequency window          
+        function Auto_Tune(obj)
+            command0 = sprintf(':FREQuency:TUNE:IMMediate');
             fprintf(obj.interface, command0);
         end
                 
