@@ -1,21 +1,19 @@
 %  Instructions for use, for the Agilent N9010A spectrum analyzer control
 
 
-%  obj = Analyzer_EXA_N9010A()
-%  obj.Auto_Tune()         Auto tune the frequency window in case of errors
-%  obj.Set_BnadWidth(3e6)             set BW to 3MHz
-%  obj.Set_Center_Frequency(3.5e9)           set the center frequency to 1GHz
-%  obj.Set_Span(10e9)          Set Span size to 10Mz
-%  obj.set_Center_Marker()        set the position of marker and try to set the fre = 3.505E9 or any 
-%  obj.Set_Marker_onPeak(1)              set marker on a peak
-%  obj.Set_Marker(1)              put the marker on the screen
-%  obj.Turn_off_Marker(1)             remove the marker from the screen
-%  obj.Turn_off_All_Marker               remove all the markers from the screen 
-%  obj.mnp(1)              Move marker to the next position
-%  obj.gmp(1)              Get the power value of marker1
-%  obj.gmf(1)              Get the frequency value of Marker1
-%  obj.saveData()          Save the data
-%  obj.close()             Disconnect
+%  obj = Analyzer_EXA_N9010A()          Connect
+%  obj.Auto_Tune()                      Auto tune the frequency(Spectrogram) window in case of errors
+%  obj.Set_BnadWidth(3e6)               set BW to 3MHz
+%  obj.Set_Center_Frequency(3.5e9)      set the center frequency to 1GHz
+%  obj.Set_Span(10e9)                   Set Span size to 10Mz
+%  obj.Set_Marker_onPeak(1)             set marker on a peak(constant peak search)
+%  obj.Set_Marker(1)                    put the marker on the screen
+%  obj.Turn_off_Marker(1)               remove the marker from the screen
+%  obj.Turn_off_All_Marker()            remove all the markers from the screen 
+%  obj.Next_Position(1)                 Move marker to the next position
+%  obj.Get_Marker_Power(1)              Get the power value of marker1
+%  obj.Get_Marker_Freq(1)               Get the frequency value of Marker1
+%  obj.Disconnect_Analyzer()            Disconnect
 
  
 classdef Analyzer_EXA_N9010A
@@ -39,7 +37,7 @@ classdef Analyzer_EXA_N9010A
                 % scpi commands
                 
         
-     %! Auto Tune the Frequency window          
+     %! Auto Tune the Frequency(Spectrogram) window          
         function Auto_Tune(obj)
             command0 = sprintf(':FREQuency:TUNE:IMMediate');
             fprintf(obj.interface, command0);
@@ -62,14 +60,8 @@ classdef Analyzer_EXA_N9010A
             command0 = sprintf(':FREQuency:SPAN %eHz', fre);
             fprintf(obj.interface, command0);
         end
-        
-     %! set Marker on X axis         
-        function set_Center_Marker(obj)
-            command0 = sprintf(':CALCulate:MAMarker:PCENter 1');
-            fprintf(obj.interface, command0);
-        end
-        
-     %! set Marker on the Peak (number of markers are possible just change the number in the bracket)        
+          
+     %! set Marker on the Peak (constant peak search command)        
         function Set_Marker_onPeak(obj, id)
             command0 = sprintf(':Calculate:Marker%d:CPSearch 1', id);
             fprintf(obj.interface, command0);
@@ -80,13 +72,7 @@ classdef Analyzer_EXA_N9010A
             command0 = sprintf(':Calculate:Marker%d:STATe 1', id);
             fprintf(obj.interface, command0);
         end
-        
-     %! Mask or select On the marker  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\        
-        function mask(obj, id)      % select the marker number (1,2,3.....)
-            command0 = sprintf(':CALCulate:MARKer%d:MAXimum', id);
-            fprintf(obj.interface, command0);
-        end  
-        
+               
      %! turn Off only selected marker          
         function Turn_off_Marker(obj, id)     % select the marker number (1,2,3.....)
             command0 = sprintf(':Calculate:Marker%d:STATe 0', id);
@@ -99,26 +85,32 @@ classdef Analyzer_EXA_N9010A
             fprintf(obj.interface, command0);
         end        
         
-      %! move the marker Next Right Position
-           function Next_Peake_Right(obj, id)
-                command0 = sprintf(':CALCulate:Marker%d:MAXimum:RIGHT', id);
-                fprintf(obj.interface, command0);
-           end
-      %! move the marker Next Right Position
-           function Next_Peake_Left(obj, id)
-                command0 = sprintf(':CALCulate:Marker%d:MAXimum:LEFT', id);
+      %! move A marker to the Next Position
+           function Next_Position(obj, id)
+                command0 = sprintf(':CALCulate:Marker%d:MAXimum:NEXT:', id);
                 fprintf(obj.interface, command0);
            end
            
-        
+%       %! move the marker Next Right Position
+%            function Next_Peake_Right(obj, id)
+%                 command0 = sprintf(':CALCulate:Marker%d:MAXimum:RIGHT', id);
+%                 fprintf(obj.interface, command0);
+%             end
+%    
+%       %! move the marker Next Left Position
+%            function Next_Peake_Left(obj, id)
+%                 command0 = sprintf(':CALCulate:Marker%d:MAXimum:LEFT', id);
+%                 fprintf(obj.interface, command0);
+%            end    
+ 
      %! Get the Power of the Marker        
-        function Power = gmp(obj, id)
+        function Power = Get_Marker_Power(obj, id)
             command0 = sprintf(':CALCulate:MARKer%d:Y?', id);
             Power = query(obj.interface, command0);
         end
                 
      %! Get the Frequency of the Marker       
-        function fre = gmf(obj, id)
+        function fre = Get_Marker_Freq(obj, id)
             command0 = sprintf(':CALCulate:MARKer%d:X?', id);
             fre = query(obj.interface, command0);
         end
@@ -134,7 +126,7 @@ classdef Analyzer_EXA_N9010A
 %         end
 
         % disconnect the device
-        function close(obj)
+        function Disconnect_Analyzer(obj)
             fclose(obj.interface);
         end
     end
