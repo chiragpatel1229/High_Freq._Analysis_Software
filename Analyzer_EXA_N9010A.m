@@ -1,7 +1,7 @@
 %  Instructions for use, for the Agilent N9010A spectrum analyzer control
 
 
-%  obj = Analyzer_EXA_N9010A()          Connect
+%  obj = Analyzer_EXA_N9010A()          Connect to the Analyzer
 %  obj.Auto_Tune()                      Auto tune the frequency(Spectrogram) window in case of errors
 %  obj.Mode_Preset()                    Mode Preset (Returns the active mode to a known state) 
 %  obj.Set_Center_Frequency(3.5e9)      set the center frequency to 1GHz

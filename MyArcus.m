@@ -204,8 +204,8 @@ classdef MyArcus
         function out = PositionTo(pos)
             out = RunCMD('CLR');
             out2 = RunCMD('MM');
-            if strcmp(out2,'0')&&(pos < 3210)
-                RunCMD('X',num2str(pos));                
+            if strcmp(out2,'0')&&(pos < 3205)
+                RunCMD('X',num2str((3200 * pos) / 360));                
             end
         end
         
