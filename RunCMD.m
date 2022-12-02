@@ -13,11 +13,11 @@ end
 
 %% write cmd to gui_cmd.txt
 my_mat(3,2) = CMD;
-writematrix(my_mat,'gui_cmd.txt')
+writematrix(my_mat,'gui_cmd.txt');
 
 %% Run
 
-!GUI_CMD.exe
+!GUI_CMD.exe;
 
 %% read outcome
 Out = readmatrix('GuiCmdOut.txt','OutputType','string');

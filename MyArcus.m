@@ -162,7 +162,7 @@ classdef MyArcus
         function out = resetStage()
             RunCMD('CLR');
             try
-                RunCMD('HSPD',['=',num2str(MyArcus.H_vel)]);
+                RunCMD('HSPD',['=',num2str(MyArcus.H_vel)]); 
                 RunCMD('LSPD',['=',num2str(MyArcus.L_vel)]);
                 RunCMD('ACC',['=',num2str(MyArcus.Accn)]);
                 out = RunCMD('TOC',['=',num2str(MyArcus.time_out)]);

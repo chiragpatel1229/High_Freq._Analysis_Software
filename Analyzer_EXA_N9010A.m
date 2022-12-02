@@ -11,8 +11,10 @@
 %  obj.Peak_Search(1)                   Peak Search (Sending this command selects the subopcoded marker)
 %  obj.Set_Marker(1)                    put the marker on the screen
 %  obj.Turn_off_Marker(1)               remove the marker from the screen
-%  obj.Turn_off_All_Markers()            remove all the markers from the screen 
+%  obj.Turn_off_All_Markers()           remove all the markers from the screen 
 %  obj.Next_Position(1)                 Move marker to the next position
+%  obj.Next_Peake_Right(1)              Move marker to the next Right position
+%  obj.Next_Peake_Left(1)               Move marker to the next Left position
 %  obj.Get_Marker_Power(1)              Get the power value of marker1
 %  obj.Get_Marker_Freq(1)               Get the frequency value of Marker1
 %  obj.Disconnect_Analyzer()            Disconnect
@@ -106,17 +108,17 @@ classdef Analyzer_EXA_N9010A
             fprintf(obj.interface, command0);
          end
            
-%       %! move the marker Next Right Position
-%            function Next_Peake_Right(obj, id)
-%                 command0 = sprintf(':CALCulate:Marker%d:MAXimum:RIGHT', id);
-%                 fprintf(obj.interface, command0);
-%             end
-%    
-%       %! move the marker Next Left Position
-%            function Next_Peake_Left(obj, id)
-%                 command0 = sprintf(':CALCulate:Marker%d:MAXimum:LEFT', id);
-%                 fprintf(obj.interface, command0);
-%            end    
+      %! move the marker Next Right Position
+           function Next_Peake_Right(obj, id)
+                command0 = sprintf(':CALCulate:Marker%d:MAXimum:RIGHT', id);
+                fprintf(obj.interface, command0);
+            end
+   
+      %! move the marker Next Left Position
+           function Next_Peake_Left(obj, id)
+                command0 = sprintf(':CALCulate:Marker%d:MAXimum:LEFT', id);
+                fprintf(obj.interface, command0);
+           end    
  
      %! Get the Power of the Marker        
         function Power = Get_Marker_Power(obj, id)
