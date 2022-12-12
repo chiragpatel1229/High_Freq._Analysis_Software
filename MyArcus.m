@@ -3,7 +3,7 @@
 % MyArcus.DevInfo       get the device informations
 % MyArcus.goHome        Return to the home value
 % MyArcus.HCA           get/set the Home correction value [Use (0) to know home value]
-% My Arcus.IsBusy       is motor "Working = 1" or "Free = 0"
+% MyArcus.IsBusy       is motor "Working = 1" or "Free = 0"
 % MyArcus.Abort         Abort the operation
 % MyArcus.Stop          Stop the motor
 % MyArcus.Enable        Enable the motor fot the operations
@@ -17,6 +17,7 @@
 % MyArcus.getParams     Get the exact operating perameters from the motor
 % MyArcus.setParams     adjust all the parameters as per need e.g.(0,1000,300,300)
 % MyArcus.PositionTo    turn the motor ( 0-3200 ) steps
+% MyArcus.Current_Pos   Get Motor's current position 
 % MyArcus.BackToZero    set the motor position to 0
 
 
@@ -182,8 +183,8 @@ classdef MyArcus
             accn = RunCMD('ACC');
             
             out.pos = double(pos);
-            out.l_vel = double(l_vel);
             out.h_vel = double(h_vel);
+            out.l_vel = double(l_vel); 
             out.accn = double(accn);
         end
         
@@ -195,19 +196,25 @@ classdef MyArcus
                 RunCMD('HSPD',['=',num2str(h_vel)]);
                 RunCMD('LSPD',['=',num2str(l_vel)]);
                 RunCMD('ACC',['=',num2str(accn)]);
-                RunCMD('X',num2str(pos));
+                RunCMD('X',num2str((3200 * pos) / 360));
                 out = 'Done';
             end
         end
         
-        % move to the position ( 0-3200 )(16 = 1.8 Degree)
+        % move to the position ( 0-3200 ) ( 0-360' )(16 = 1.8 Degree)
         function out = PositionTo(pos)
             out = RunCMD('CLR');
             out2 = RunCMD('MM');
-            if strcmp(out2,'0')&&(pos < 3205)
+            if strcmp(out2,'0')&&(pos < 361)
                 RunCMD('X',num2str((3200 * pos) / 360));                
             end
-        end
+        end 
+        
+        % Get Motor's current position 
+        function out = Current_Pos()
+            cmd = str2double(RunCMD('PX'));
+            out = ((360 * cmd) / 3200);
+        end 
         
         % Set current position to zero 
         % motor ni position ne jiro par set karva mate aa use karva no che
