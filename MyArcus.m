@@ -209,14 +209,14 @@ classdef MyArcus
             out = RunCMD('CLR');
             out2 = RunCMD('MM');
             if strcmp(out2,'0')&&(pos < 361)
-                RunCMD('X',num2str((3200 * pos) / 360));                
+                RunCMD('X',num2str((16000 * pos) / 360));                
             end
         end 
         
         % Get Motor's current position 
         function out = Current_Pos()
             cmd = str2double(RunCMD('PX'));
-            out = ((360 * cmd) / 3200);
+            out = ((360 * cmd) / 16000);
         end 
         
         % Set current position to zero 
