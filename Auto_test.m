@@ -1,16 +1,26 @@
 
 
-function H = Auto_test(times, degrees, seconds)
-            app.obj = Analyzer_EXA_N9010A();
-            H = table([],[],[],[],'VariableNames',["No.","Step_Size","Power","Freq"]);
+function T = Auto_test(range, resolution, seconds)
+            app.obj = Analyzer_EXA_N9010A();   
+            times = range / resolution;
+            C = [times 4];
+            J = {'string','double','double','double'};
+            P = ["No.","Step_Size","Power","Freq"];
+            T =  table('Size',C,'VariableTypes',J,'VariableNames',P);
             for step_times = 1:times 
-                Step_Size = step_times * degrees;
+                Step_Size = step_times * resolution;
                 MyArcus.PositionTo(Step_Size);
                 Power = str2double(app.obj.Get_Marker_Power(1));
                 Freq  = str2double(app.obj.Get_Marker_Freq(1));
-                H(end+1,:) =  {step_times,Step_Size, Power, Freq}
+                T(step_times,:) =  {step_times,Step_Size, Power, Freq};
                 pause(seconds);
-            end
-            pause(2);
+            end 
             MyArcus.PositionTo(0);
-        end 
+end 
+
+        
+
+
+
+% 
+% 
