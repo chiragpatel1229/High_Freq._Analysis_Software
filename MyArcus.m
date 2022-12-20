@@ -199,8 +199,21 @@ classdef MyArcus
                 RunCMD('HSPD',['=',num2str(h_vel)]);
                 RunCMD('LSPD',['=',num2str(l_vel)]);
                 RunCMD('ACC',['=',num2str(accn)]);
-                RunCMD('X',num2str((3200 * pos) / 360));
+                RunCMD('X',num2str((16000 * pos) / 360));
                 out = 'Done';
+            end
+        end
+        
+        function out = motor_status()
+            
+            try
+                out = RunCMD('MST');
+                if strcmp(out,'1')
+                   return 
+                else
+                    out = 0;
+                end
+            catch               
             end
         end
         
