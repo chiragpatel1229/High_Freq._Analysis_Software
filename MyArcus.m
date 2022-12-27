@@ -23,7 +23,7 @@
 
 classdef MyArcus
     properties(Constant) % Constant values set into the motor
-        H_vel = 1000; % HSPD High speed setting for stage (pps)
+        H_vel = 1000; % HSPD High speed setting for stage (pps-pulses per second)
         L_vel = 300; % LSPD Low speed setting for stage (pps)
         Accn = 300; % Accelaration time (ms)
         time_out = 10; % Time out value (ms)
