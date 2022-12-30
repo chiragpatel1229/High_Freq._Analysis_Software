@@ -1,9 +1,5 @@
 
 
-
-
-
-
 function T = auto_while(range, resolution, seconds)
             app.obj = Analyzer_EXA_N9010A();  
             MyArcus.PositionTo(0); %(check it with the if statement) 
