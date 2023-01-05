@@ -1,17 +1,23 @@
 a = readtable('360-3-2.xlsx');
 b = readtable('Yagi.xlsx');
+
 x=table2array(a(:,2));
 y=table2array(a(:,3));
+
 e=table2array(b(:,2));
 f=table2array(b(:,3));
+
 x1 = deg2rad(x);
+
 e1 = deg2rad(e);
+
 figure(1)
 polarplot(x1, y)
-% figure(2)  
-hold on
+
+figure(2)  
+% hold on
 polarplot(e1, f)
-hold off
+% hold off
 
 
 
