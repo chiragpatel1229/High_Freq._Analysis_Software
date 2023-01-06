@@ -17,7 +17,8 @@ classdef Generator_MXG_N5182A
     end
     methods
         function obj1 = Generator_MXG_N5182A()                        
-            obj1.interface = instrfind('Type', 'visa-tcpip', 'RsrcName', 'TCPIP0::192.168.6.4::inst0::INSTR', 'Tag', '');
+            obj1.interface = instrfind('Type', 'visa-tcpip', 'RsrcName',...
+                'TCPIP0::192.168.6.4::inst0::INSTR', 'Tag', '');
             if isempty(obj1.interface)
                 obj1.interface = visa('KEYSIGHT', 'TCPIP0::192.168.6.4::inst0::INSTR');
             else
