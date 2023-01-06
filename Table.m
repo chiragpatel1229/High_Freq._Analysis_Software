@@ -1,8 +1,8 @@
-a = readtable('yagi_180.xlsx');
+a = readtable('yagi.xlsx');
 % b = readtable('Yagi.xlsx');
 
 x=  table2array(a(2:end,2));
-y=  table2array(a(2:end,3)) + 100;
+y=  - (table2array(a(2:end,3)));
 
 % e=  table2array(b(:,2));
 % f= - table2array(b(:,3));
