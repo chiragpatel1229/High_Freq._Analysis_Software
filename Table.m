@@ -72,9 +72,10 @@ polarplot(x1, y)
                 case 'OK'
                     delete(app)
                 case 'Disconnect EXA & MXG'
+                    app.obj.Auto_Tune();
                     app.obj1.Disconnect_Generator();
                     app.obj.Disconnect_Analyzer();
+                    delete(app)
                 case 'Cancel'
                     return
             end
-        end
