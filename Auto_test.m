@@ -21,7 +21,7 @@ function T = Auto_test(range, resolution, seconds)
                 Power = str2double(app.obj.Get_Marker_Power(1));
                 Freq  = str2double(app.obj.Get_Marker_Freq(1));
                 
-                T(step_times,:) = {step_times,Step_Size, Power, Freq}
+                T(step_times,:) = {step_times,Step_Size, Power, Freq};
                 pause(0.5)
                 
             end 
