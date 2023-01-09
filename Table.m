@@ -1,18 +1,18 @@
-a = readtable('yagi.xlsx');
-% b = readtable('Yagi.xlsx');
-
-x=  table2array(a(2:end,2));
-y=  - (table2array(a(2:end,3)));
-
-% e=  table2array(b(:,2));
-% f= - table2array(b(:,3));
-
-x1 = deg2rad(x);
-
-% e1 = deg2rad(e);
-
-figure(1)
-polarplot(x1, y)
+% a = readtable('yagi.xlsx');
+% % b = readtable('Yagi.xlsx');
+% 
+% x=  table2array(a(2:end,2));
+% y=  - (table2array(a(2:end,3)));
+% 
+% % e=  table2array(b(:,2));
+% % f= - table2array(b(:,3));
+% 
+% x1 = deg2rad(x);
+% 
+% % e1 = deg2rad(e);
+% 
+% figure(1)
+% polarplot(x1, y)
 
 % figure(2)  
 % hold on
@@ -26,9 +26,9 @@ polarplot(x1, y)
 % % BUT 2022b does need to have a specific datatype.
 % % smaple code rushabh na email ma che \ 
 
-% Set up the polar plot
+% % Set up the polar plot
 % h = polarplot(0,0);
-
+% 
 % % Set the axis limits and label properties
 % rlim([0 1]);
 % rtickformat('%d%%');
@@ -41,7 +41,7 @@ polarplot(x1, y)
 % radius = 56;
 % 
 % % Set the loop counter
-% n = 1;
+% n = 0.5;
 % 
 % % Start the loop
 % while n <= 100
@@ -59,23 +59,23 @@ polarplot(x1, y)
 %     
 %     % Increment the loop counter
 %     n = n + 1;
+%     pause(1)
 % end
+% 
+% 
 
-
-
-% closing request for app designer
-
-            selection = uiconfirm(app.AntennaTestbedUIFigure,...
-                ["Closing App?";"Please reset and disconnect EXA & MXG."],...
-                'Confirm Close', 'Options',{'Disconnect EXA & MXG','OK','Cancel'});
-            switch selection
-                case 'OK'
-                    delete(app)
-                case 'Disconnect EXA & MXG'
-                    app.obj.Auto_Tune();
-                    app.obj1.Disconnect_Generator();
-                    app.obj.Disconnect_Analyzer();
-                    delete(app)
-                case 'Cancel'
-                    return
-            end
+N = 10000;
+phi = linspace(0, 2 * pi, N);
+u1 = 3;
+figure 
+grid on
+h = animatedline;
+M = 1e3;
+varphic = linspace(0, 2 * pi, M);
+for i = 1 : M
+    z = cos(u1 .* phi + varphic(1, i));
+    h = polarplot(phi,z);
+%     clearpoints(h);
+%     addpoints(h, phi, z);
+    drawnow update
+end
