@@ -4,6 +4,8 @@ function T = Auto_test(range, resolution, seconds)
             app.obj = Analyzer_EXA_N9010A(); 
             app.obj.Set_Marker_onPeak(1)
 
+            
+
             times = range / resolution;
 
             C = [times 4];

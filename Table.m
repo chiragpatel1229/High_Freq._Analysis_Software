@@ -67,9 +67,9 @@
 N = 10000;
 phi = linspace(0, 2 * pi, N);
 u1 = 3;
-figure 
-grid on
-h = animatedline;
+figure   % to create a new fig. for every execution
+% grid on  % it is not necessary for the polar plot 
+h = animatedline; % important for the animation 
 M = 1e3;
 varphic = linspace(0, 2 * pi, M);
 for i = 1 : M
