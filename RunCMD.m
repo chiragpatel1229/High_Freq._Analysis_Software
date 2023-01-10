@@ -1,5 +1,4 @@
 function Out = RunCMD(myCmd,myValue)
-
 my_mat = readmatrix('gui_cmd.txt','OutputType','string');
 if nargin<2
     myValue = [];
