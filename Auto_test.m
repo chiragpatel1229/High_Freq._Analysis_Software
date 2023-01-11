@@ -48,13 +48,6 @@ function T = Auto_test(range, resolution, seconds)
             T =  table('Size',C,'VariableTypes',J,'VariableNames',P);
             
             figure
-            L = gca;
-            angles = 0:20:360;
-            L.ThetaTick = angles;
-            L.ThetaDir = 'clockwise';
-            L.RTickMode = 'auto';
-            L.ThetaZeroLocation = 'top';
-            W = animatedline;
 
             for step_times = 1:(times + 1) 
 
@@ -65,12 +58,31 @@ function T = Auto_test(range, resolution, seconds)
 
                 Power = str2double(app.obj.Get_Marker_Power(1));
                 Freq  = str2double(app.obj.Get_Marker_Freq(1));
-                
-                R_Step = deg2rad(Step_Size);
-                polarplot(W,R_Step,Power);
-                drawnow
-                
+                                
                 T(step_times,:) = {step_times,Step_Size, Power, Freq};
+%                 x =  table2array(T(:,2));
+%                 y =  table2array(T(:,3));
+%                 x1 = deg2rad(x);
+%                 
+                
+                
+                R_Step = deg2rad(Step_Size); % current motor angle converted to radian 
+                
+                polarplot(R_Step,100 + (Power), 'o');     %  polar plot 
+                
+                
+                
+%                 polarplot(x1, y);
+                L = gca;
+                angles = 0:20:360;
+                L.ThetaTick = angles;
+                L.ThetaDir = 'clockwise';
+                L.RTickMode = 'auto';
+                L.ThetaZeroLocation = 'top';
+                hold on
+
+%                 drawnow update
+                
                 pause(0.5)
                 
             end 
