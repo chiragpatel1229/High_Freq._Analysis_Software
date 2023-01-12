@@ -68,7 +68,7 @@ function T = Auto_test(range, resolution, seconds)
                 
                 R_Step = deg2rad(Step_Size); % current motor angle converted to radian 
                 
-                polarplot(R_Step,100 + (Power), 'o');     %  polar plot 
+                polarplot(R_Step,100 + (Power), "");     %  polar plot 
                 
                 
                 
