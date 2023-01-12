@@ -1,31 +1,58 @@
+[filenames,pathname] = uigetfile('*.*','Select the files','MultiSelect','on');
+
+for i = 1:length(filenames)
+   currentData = readtable(fullfile(pathname,filenames{i}));
+   eval([ 'file_' num2str(i) '=currentData;' ])
+end
+
+
+
 % a = readtable('yagi_180.xlsx');
 % 
-% x=  table2array(a(2:end,2));
-% y=  table2array(a(2:end,3));
+x=  table2array(file_1(2:end,2));
+y=  table2array(file_1(2:end,3));
 % 
-% x1 = deg2rad(x);
-% 
-% 
-% polarpattern(x, y, 'TitleTop','Yagi Antenna.','AngleAtTop',0, 'AngleDirection','cw','MagnitudeAxisAngle',90);
-% 
+x1 = deg2rad(x);
+
+
+polarpattern(x, y, 'TitleTop','Yagi Antenna.','AngleAtTop',0, 'AngleDirection','cw','MagnitudeAxisAngle',90);
+
 % b = readtable('Yagi.xlsx');
-% e=  table2array(b(:,2));
-% f=  table2array(b(:,3));
-%  
-% hold on
-% polarpattern(e, f);
-% hold off
+e=  table2array(file_2(:,2));
+f=  table2array(file_2(:,3));
+ 
+hold on
+polarpattern(e, f);
+hold off
 % % 
 % 
 
 
+Auto_test:
+                
+                
+% %                 x =  table2array(T(:,2));
+% %                 y =  table2array(T(:,3));
+% %                 x1 = deg2rad(x);
+% %                 
+%                 
+%                 
+%                 R_Step = deg2rad(Step_Size); % current motor angle converted to radian 
+%                 
+%                 polarplot(R_Step,100 + (Power), "");     %  polar plot 
+%                 
+%                 
+%                 
+% %                 polarplot(x1, y);
+%                 L = gca;
+%                 angles = 0:20:360;
+%                 L.ThetaTick = angles;
+%                 L.ThetaDir = 'clockwise';
+%                 L.RTickMode = 'auto';
+%                 L.ThetaZeroLocation = 'top';
+%                 hold on
 
-[filenames,pathname] = uigetfile('*.*','Select the files','MultiSelect','on');
-allData = table();
-for i = 1:length(filenames)
-   currentData = readtable(fullfile(pathname,filenames{i}));
-%    allData = [allData; currentData];
-end
+%                 drawnow update
 
 
 

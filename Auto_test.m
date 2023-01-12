@@ -60,28 +60,13 @@ function T = Auto_test(range, resolution, seconds)
                 Freq  = str2double(app.obj.Get_Marker_Freq(1));
                                 
                 T(step_times,:) = {step_times,Step_Size, Power, Freq};
-%                 x =  table2array(T(:,2));
-%                 y =  table2array(T(:,3));
-%                 x1 = deg2rad(x);
-%                 
                 
-                
-                R_Step = deg2rad(Step_Size); % current motor angle converted to radian 
-                
-                polarplot(R_Step,100 + (Power), "");     %  polar plot 
-                
-                
-                
-%                 polarplot(x1, y);
-                L = gca;
-                angles = 0:20:360;
-                L.ThetaTick = angles;
-                L.ThetaDir = 'clockwise';
-                L.RTickMode = 'auto';
-                L.ThetaZeroLocation = 'top';
-                hold on
-
-%                 drawnow update
+                x = table2array(T(:,2));
+                y = table2array(T(:,3));
+                hold off;
+                polarpattern(x, y, 'LineStyle','-', 'TitleTop','Antenna Radiation Pattern',...
+                    'AngleAtTop',0, 'AngleDirection','cw','MagnitudeAxisAngle',90);
+                hold on;
                 
                 pause(0.5)
                 
