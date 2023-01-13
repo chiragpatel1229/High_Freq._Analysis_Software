@@ -61,16 +61,19 @@ function T = Auto_test(range, resolution, seconds)
                                 
                 T(step_times,:) = {step_times,Step_Size, Power, Freq};
                 
-                x = table2array(T(:,2));
-                y = table2array(T(:,3));
-                hold off;
-                polarpattern(x, y, 'LineStyle','-', 'TitleTop','Antenna Radiation Pattern',...
-                    'AngleAtTop',0, 'AngleDirection','cw','MagnitudeAxisAngle',90);
+                
                 hold on;
+                polarpattern(Step_Size, Power, 'LineStyle','-', 'TitleTop','Antenna Radiation Pattern',...
+                    'AngleAtTop',0, 'AngleDirection','cw','MagnitudeAxisAngle',90, 'Marker', '*');
                 
                 pause(0.5)
                 
             end 
+            x = table2array(T(:,2));
+            y = table2array(T(:,3));
+            hold on;
+            polarpattern(x, y, 'LineStyle','-', 'TitleTop','Antenna Radiation Pattern',...
+                    'AngleAtTop',0, 'AngleDirection','cw','MagnitudeAxisAngle',90);
             pause (1)
             MyArcus.PositionTo(0);
 end

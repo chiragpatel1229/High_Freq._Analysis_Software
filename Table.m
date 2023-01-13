@@ -1,34 +1,61 @@
-[filenames,pathname] = uigetfile('*.*','Select the files','MultiSelect','on');
+[filenames,pathname] = uigetfile('*.xlsx','Select the files','MultiSelect','on');
 
-for i = 1:length(filenames)
-   currentData = readtable(fullfile(pathname,filenames{i}));
-   eval([ 'file_' num2str(i) '=currentData;' ])
+num_files = length(filenames)
+
+if num_files < 2
+    L = imread("icons8-lol-64.png");
+    msgbox(["You have selected only one file!!";...
+        "Please select more than 1 file."],...
+        "Error","custom",L);  
+% else    
+%     for i = 1:num_files
+%         currentData = readtable(fullfile(pathname,filenames{i}),'VariableNamingRule','preserve');
+%         eval([ 'file_' num2str(i) '=currentData;' ])
+%     end
+% 
 end
-
-
-
-% a = readtable('yagi_180.xlsx');
 % 
-x=  table2array(file_1(2:end,2));
-y=  table2array(file_1(2:end,3));
-% 
-x1 = deg2rad(x);
-
-
-polarpattern(x, y, 'TitleTop','Yagi Antenna.','AngleAtTop',0, 'AngleDirection','cw','MagnitudeAxisAngle',90);
-
-% b = readtable('Yagi.xlsx');
-e=  table2array(file_2(:,2));
-f=  table2array(file_2(:,3));
- 
-hold on
-polarpattern(e, f);
-hold off
+% % a = readtable('yagi_180.xlsx');
 % % 
+% x=  table2array(file_1(:,2));
+% y=  table2array(file_1(:,3));
+% % 
+% x1 = deg2rad(x);
+% 
+% 
+% polarpattern(x, y, 'TitleTop','Yagi Antenna.','AngleAtTop',0, 'AngleDirection','cw','MagnitudeAxisAngle',90);
+% 
+% % b = readtable('Yagi.xlsx');
+% e=  table2array(file_2(:,2));
+% f=  table2array(file_2(:,3));
+%  
+% hold on
+% polarpattern(e, f);
+% hold off
+% % % 
 % 
 
 
-Auto_test:
+% suggesting the valid number for the stepsize
+
+% Step_size = input('Enter a value for step size: ');
+% 
+% if mod(Step_size, 360) ~= 0
+%     new_Step_size = round(Step_size);
+%     if mod(new_Step_size, 360) ~= 0
+%         new_Step_size = new_Step_size - 1;
+%     end
+%     fprintf('The value %.1f is not divisible by 360. Suggested value: %d\n', Step_size, new_Step_size);
+% else
+%     fprintf('The value %.1f is divisible by 360\n', Step_size);
+% end
+
+
+
+
+
+
+
                 
                 
 % %                 x =  table2array(T(:,2));
