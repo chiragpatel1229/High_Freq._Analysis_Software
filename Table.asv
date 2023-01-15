@@ -48,12 +48,12 @@
 % winopen(app.file_name);
 
 % currentDate = datetime;
-% fileName = datestr(datetime, 'dd mmmm yyyy; HH-MM'); %#ok<DATST,DATST> 
-% [file, path,~] = uiputfile('*.xlsx', 'Save Your Data File.....!', fileName);
-% app.file_name = [path file];      
-% writetable(app.UITable.Data,app.file_name)
+fileName = datestr(datetime, 'dd mmmm yyyy 'T" HH-MM');
+[file, path,~] = uiputfile('*.xlsx', 'Save Your Data File.....!', fileName);
+app.file_name = [path file];      
+writetable(app.UITable.Data,app.file_name)
 
-t = datestr(datetime('now','Format','d-MMM-y HH:mm:ss Z')); %#ok<DATST,DATST> 
+
 
 % s1 = string(datetime)
 % d.Format = 'uuuu-MM-dd''T''HH:mm:ss';

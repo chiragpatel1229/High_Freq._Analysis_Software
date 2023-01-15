@@ -32,9 +32,6 @@ classdef MyArcus
     
     methods (Static)
         
-        function obj2 = MyArcus
-        end
-       
         % Device information
         function out = DevInfo()
             out = [];
