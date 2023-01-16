@@ -96,6 +96,10 @@ function T = Auto_test(range, resolution, seconds)
             
             figure
             polarplot(0,0)
+            title('Antenna Radiation Pattern..!')
+            ax = gca;
+            ax.ThetaZeroLocation = 'top';
+            ax.ThetaColor = 'blue';
 
             for step_times = 1:(times + 1) 
 
@@ -108,13 +112,14 @@ function T = Auto_test(range, resolution, seconds)
                 Freq  = str2double(app.obj.Get_Marker_Freq(1));
                                 
                 T(step_times,:) = {step_times,Step_Size, Power, Freq};
-                
+
+                y=  table2array(T(:,3));
                 x1 = deg2rad(Step_Size);
-                mn = min(T(:,2));
-                mx = max(T(:,2));
+                mn = min(y)-30;
+                mx = max(y)+5;
                 hold on;
-                rlim([mn mx+1.5])
-                polarplot(x1, Power, 'Marker','.');
+                rlim([mn mx])
+                polarplot(x1, Power, 'Marker','*');
 
                 
                 
