@@ -3,7 +3,7 @@
 % MyArcus.DevInfo       get the device informations
 % MyArcus.goHome        Return to the home value
 % MyArcus.HCA           get/set the Home correction value [Use (0) to know home value]
-% MyArcus.IsBusy       is motor "Working = 1" or "Free = 0"
+% MyArcus.IsBusy        is motor "Working = 1" or "Free = 0"
 % MyArcus.Abort         Abort the operation
 % MyArcus.Stop          Stop the motor
 % MyArcus.Enable        Enable the motor fot the operations

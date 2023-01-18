@@ -7,26 +7,46 @@
 %         eval([ 'file_' num2str(i) '=currentData;' ])
 %     end
 
-file_1 = readtable('Yagi.xlsx', 'VariableNamingRule', 'preserve');
 
-x=  table2array(file_1(:,2));
-y=  table2array(file_1(:,3));
 
-mn = min(y);
-mx = max(y);
 
-x1 = deg2rad(x);
-
-figure
-polarplot(0,0)
-
-hold on 
-
-rlim([mn mx+1.5])
-
-polarplot(x1, y, 'Marker','*');
+% file_1 = readtable('Yagi.xlsx', 'VariableNamingRule', 'preserve');
+% 
+% x=  table2array(file_1(:,2));
+% y=  table2array(file_1(:,3));
+% 
+% mn = min(y);
+% mx = max(y);
+% 
+% x1 = deg2rad(x);
+% 
+% figure
+% polarplot(0,0)
+% 
+% hold on 
+% 
+% rlim([mn mx+1.5])
+% 
+% polarplot(x1, y, 'Marker','*');
 
 % hold off
+
+
+
+
+
+% [filenames, pathname] = uigetfile('*.xlsx', 'Select Data Files...', 'MultiSelect', 'on');
+% if iscell(filenames)
+% % more than one file selected
+% else
+% % only one file selected
+% filename = filenames
+% end
+
+
+ h = (( 3200 / 1000 ) * 5 ) + 2.2
+
+
 
 % file_2 = readtable('Yagi.xlsx');
 % e=  table2array(file_2(:,2));
