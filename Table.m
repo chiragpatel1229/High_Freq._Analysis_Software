@@ -73,7 +73,7 @@
 % app.file_name = [path file];      
 % writetable(app.UITable.Data,app.file_name)
 
-t = datestr(datetime('now','Format','d-MMM-y HH:mm:ss Z'));  
+% t = datestr(datetime('now','Format','d-MMM-y HH:mm:ss Z'));  
 
 % s1 = string(datetime)
 % d.Format = 'uuuu-MM-dd''T''HH:mm:ss';

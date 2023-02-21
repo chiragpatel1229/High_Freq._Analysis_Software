@@ -1,39 +1,33 @@
-h = 0;
-Delay = 0.300;
-fprintf("Communication Time Calculation Between EXA and MXG.\nWith %d second time pause.",Delay);
+
+Delay = 0.010;
+fprintf("Communication Time Calculation Between EXA and MXG.\n  With %d second time pause. \n \n",Delay);
+h = 0;  
 tic;
-while h<20
-    if h == 2
+while h<25
+    if h == 5
         obj1.SetPowerLevel(10);               
-        fprintf("set power = 10\n");
+        fprintf("\n \n set power = 10\n");
         toc 
-    elseif h == 7
+        fprintf("\n \n");
+    elseif h == 10
         obj1.SetPowerLevel(5);                
-        fprintf("set power = 5\n");
+        fprintf("\n \n set power = 5\n");
         toc 
-    elseif h == 13
+        fprintf("\n \n");
+    elseif h == 15
         obj1.SetPowerLevel(0);                
-        fprintf("set power = 0\n");
+        fprintf("\n \n set power = 0\n");
         toc 
-    elseif h == 18
+        fprintf("\n \n");
+    elseif h == 20
         obj1.SetPowerLevel(15);
-        fprintf("set power = 15\n");  
+        fprintf("\n \n set power = 15\n");  
         toc 
+        fprintf("\n \n");
     end
     pause (Delay)
-    power = obj.Get_Marker_Power(1)
+    P = obj.Get_Marker_Power(1);
+    fprintf(P);
     toc
     h = h+1;
 end
-
-a = MyArcus.IsBusy;
-% if a == 1
-%     pause (0.5)
-%     b = MyArcus.IsBusy;
-%     fprintf("The motor is busy.");
-%     if b == 1
-%         return
-%     end
-% else     
-% fprintf("The motor is free.");
-% end
