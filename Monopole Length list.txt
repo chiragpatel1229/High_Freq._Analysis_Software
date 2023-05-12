@@ -1,0 +1,36 @@
+With a Mark and Silver cap    = 3.05 cm
+Without a Mark and Copper cap = 3.00 cm
+
+With a Mark and Silver cap    = 4.60 cm
+Without a Mark and Silver cap = 4.50 cm
+
+============================================
+Common for all antennas:
+
+Diameter of the Antenna = 0.30 cm
+Radius of the Antenna   = 0.15 cm    
+
+============================================
+
+Ground Plane:
+
+Big Plate   (Copper material)
+	- Diameter = 30  cm
+	- Radius   = 15  cm
+  Second hole distance from center
+	- 8.3 cm
+
+============================================
+
+Small Plate (Copper material)
+	- Diameter = 15  cm
+	- Radius   = 7.5 cm
+
+Without a Mark and Copper cap = 2.50 cm
+
+============================================
+Stepper motor Hight from the Ground: 
+169.5 cm + 46 cm (from the structure's top level) = 215.5 + antenna hight with SMA connector
+
+HyperLog hight: 78.5 cm (table top) + 145 cm (tripod) = 223.5 cm 
+
