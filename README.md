@@ -21,6 +21,6 @@ The software is developed using MATLAB programming language that supports the VI
 
 The primary objective of this software is to provide a tool for investigating the directional characteristics of antennas. It works in conjunction with FEKO simulation software and antenna analysis systems to provide useful information about the performance of antennas in communication systems. The software compares simulation results with actual practical results, thereby confirming the accuracy of the simulation and contributing to the development of the field of communication technology.
 
-Please refer to the individual directories for more detailed information on the setup, usage, and contribution guidelines.
+Please refer to the individual script for more detailed information on the setup, usage, and contribution guidelines.
 
 ![GUI](GUI.png)
